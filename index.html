@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexzon Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-nexzon text-white">
+    <div class="container-fluid py-4 px-3">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8 col-xl-6 shadow-lg rounded p-4 pb-5 bg-nexzon-dark mb-4"> 
+                
+                <div class="d-flex align-items-center mb-4 position-relative"> 
+                    <div class="d-flex align-items-center"> 
+                        <button class="btn btn-outline-nexzon rounded-pill p-2 px-3 me-3"> 
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <h5 class="mb-0 text-white">Oi Hernandes,</h5>
+                    </div>
+                    
+                    <img src="assets/imagens/Logo Nexzon.png" alt="Logo Nexzon" class="img-fluid position-absolute top-50 start-50 translate-middle" style="max-height: 90px; z-index: 1;"> 
+                    
+                    <div class="ms-auto"> 
+                        <button class="btn btn-outline-nexzon rounded-circle p-2">
+                            <i class="fas fa-bell"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="mb-5 pb-3">
+                    <p class="mb-1 text-muted">Seu saldo atual é</p>
+                    <h2 class="fw-bold text-white mb-2" id="currentBalance">R$ X.XXX,XX</h2>
+                    
+                    <button class="btn btn-sm btn-outline-secondary rounded-pill" id="toggleBalanceBtn">
+                        <i class="fas fa-eye-slash" id="toggleBalanceIcon"></i>
+                        <span id="toggleBalanceText">Esconder</span>
+                    </button>
+                    </div>
+                
+                <div class="row g-3 mb-5">
+                    <div class="col-4 col-md-3 text-center">
+                        <a href="#" class="clickable-icon-area text-decoration-none text-white">
+                            <div class="icon-container rounded-circle bg-nexzon-accent mx-auto mb-2">
+                                <i class="fas fa-piggy-bank fa-lg text-white"></i> </div>
+                            <p class="small">Cadastrar Banco</p> </a>
+                    </div>
+                    <div class="col-4 col-md-3 text-center">
+                        <a href="#" class="clickable-icon-area text-decoration-none text-white">
+                            <div class="icon-container rounded-circle bg-nexzon-accent mx-auto mb-2">
+                                <i class="fas fa-arrow-up fa-lg text-white"></i>
+                            </div>
+                            <p class="small">Receitas</p>
+                        </a>
+                    </div>
+                    <div class="col-4 col-md-3 text-center">
+                        <a href="#" class="clickable-icon-area text-decoration-none text-white">
+                            <div class="icon-container rounded-circle bg-nexzon-accent mx-auto mb-2">
+                                <i class="fas fa-arrow-down fa-lg text-white"></i>
+                            </div>
+                            <p class="small">Despesas</p>
+                        </a>
+                    </div>
+                    <div class="col-4 col-md-3 text-center">
+                        <a href="#" class="clickable-icon-area text-decoration-none text-white">
+                            <div class="icon-container rounded-circle bg-nexzon-accent mx-auto mb-2">
+                                <i class="far fa-credit-card fa-lg text-white"></i>
+                            </div>
+                            <p class="small">Cartão de Crédito</p>
+                        </a>
+                    </div>
+                    <div class="col-4 col-md-3 text-center">
+                        <a href="#" class="clickable-icon-area text-decoration-none text-white">
+                            <div class="icon-container rounded-circle bg-nexzon-accent mx-auto mb-2">
+                                <i class="fas fa-money-bill-wave fa-lg text-white"></i>
+                            </div>
+                            <p class="small">Investimentos</p>
+                        </a>
+                    </div>
+                    <div class="col-4 col-md-3 text-center">
+                        <a href="#" class="clickable-icon-area text-decoration-none text-white">
+                            <div class="icon-container rounded-circle bg-nexzon-accent mx-auto mb-2">
+                                <i class="fas fa-bullseye fa-lg text-white"></i>
+                            </div>
+                            <p class="small">Metas</p>
+                        </a>
+                    </div>
+                </div>
+                
+                <hr class="text-secondary my-5">
+
+                <div class="d-grid">
+                    <button class="btn btn-outline-nexzon rounded-pill py-3">
+                        <i class="fas fa-lightbulb me-2"></i> Precisa de ajuda?
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        const balanceElement = document.getElementById('currentBalance');
+        const toggleButton = document.getElementById('toggleBalanceBtn');
+        const toggleIcon = document.getElementById('toggleBalanceIcon');
+        const toggleText = document.getElementById('toggleBalanceText');
+
+        const realBalance = "R$ 1.234,56";
+        const maskedBalance = "R$ X.XXX,XX";
+
+        let isBalanceVisible = false;
+
+        function toggleBalanceVisibility() {
+            if (isBalanceVisible) {
+                balanceElement.textContent = maskedBalance;
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+                toggleText.textContent = "Esconder";
+                isBalanceVisible = false;
+            } else {
+                balanceElement.textContent = realBalance;
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+                toggleText.textContent = "Mostrar";
+                isBalanceVisible = true;
+            }
+        }
+
+        toggleButton.addEventListener('click', toggleBalanceVisibility);
+
+        // Inicializa o saldo como escondido quando a página carrega
+        balanceElement.textContent = maskedBalance;
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+        toggleText.textContent = "Esconder";
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+body {
+    background-color: #1A073E;
+    font-family: Arial, sans-serif;
+}
+
+.bg-nexzon {
+    background-color: #2C1A47;
+}
+
+.bg-nexzon-dark {
+    background-color: #220C3A;
+}
+
+.bg-nexzon-accent {
+    background-color: #7A4FFF;
+}
+
+.text-nexzon-light {
+    color: #C084FC;
+}
+
+.btn-outline-nexzon {
+    border: 1px solid #C084FC;
+    color: #C084FC;
+}
+
+.btn-outline-nexzon:hover {
+    background-color: #C084FC;
+    color: #1A073E;
+}
+
+.icon-container {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease; /* Adiciona transição para o hover do círculo */
+}
+
+/* Novo estilo para a área clicável dos ícones */
+.clickable-icon-area {
+    display: block; /* Faz com que o link ocupe todo o espaço do container */
+    padding: 10px 0; /* Adiciona um padding para a área clicável */
+    border-radius: 10px; /* Arredonda as bordas da área clicável */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transição para o hover */
+    text-decoration: none; /* Remove sublinhado padrão do link */
+    color: inherit; /* Mantém a cor do texto padrão */
+}
+
+.clickable-icon-area:hover {
+    background-color: rgba(255, 255, 255, 0.05); /* Um leve background ao passar o mouse */
+    transform: translateY(-3px); /* Um leve movimento para cima */
+    cursor: pointer; /* Indica que é clicável */
+}
+
+.clickable-icon-area:hover .icon-container {
+    background-color: #C084FC; /* Muda a cor do círculo do ícone no hover */
+    box-shadow: 0 0 15px rgba(192, 132, 252, 0.5); /* Adiciona uma sombra para destaque */
+}
+
+.clickable-icon-area:hover .icon-container i {
+    color: #1A073E !important; /* Muda a cor do ícone dentro do círculo no hover */
+}
