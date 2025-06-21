@@ -118,31 +118,35 @@
         const realBalance = "R$ 1.234,56";
         const maskedBalance = "R$ X.XXX,XX";
 
-        let isBalanceVisible = false;
+        // A flag agora indica o estado ATUAL do saldo
+        let isBalanceHidden = true; // Saldo começa escondido, então esta flag é verdadeira
 
         function toggleBalanceVisibility() {
-            if (isBalanceVisible) {
-                balanceElement.textContent = maskedBalance;
-                toggleIcon.classList.remove('fa-eye');
-                toggleIcon.classList.add('fa-eye-slash');
-                toggleText.textContent = "Esconder";
-                isBalanceVisible = false;
-            } else {
+            if (isBalanceHidden) { // Se o saldo está escondido, vamos mostrar
                 balanceElement.textContent = realBalance;
                 toggleIcon.classList.remove('fa-eye-slash');
                 toggleIcon.classList.add('fa-eye');
-                toggleText.textContent = "Mostrar";
-                isBalanceVisible = true;
+                toggleText.textContent = "Esconder"; // O botão agora diz para esconder
+                isBalanceHidden = false; // Saldo agora está visível
+            } else { // Se o saldo está visível, vamos esconder
+                balanceElement.textContent = maskedBalance;
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+                toggleText.textContent = "Mostrar"; // O botão agora diz para mostrar
+                isBalanceHidden = true; // Saldo agora está escondido
             }
         }
 
         toggleButton.addEventListener('click', toggleBalanceVisibility);
 
         // Inicializa o saldo como escondido quando a página carrega
-        balanceElement.textContent = maskedBalance;
-        toggleIcon.classList.remove('fa-eye');
-        toggleIcon.classList.add('fa-eye-slash');
-        toggleText.textContent = "Esconder";
+        // (Já está definido como maskedBalance no HTML, e a lógica inicial do JS já reflete isso)
+        // Precisamos garantir que o texto do botão e o ícone reflitam o estado inicial
+        balanceElement.textContent = maskedBalance; // Garante que começa mascarado
+        toggleIcon.classList.remove('fa-eye'); // Remove o olho aberto, se houver
+        toggleIcon.classList.add('fa-eye-slash'); // Adiciona o olho fechado
+        toggleText.textContent = "Mostrar"; // O botão deve dizer "Mostrar" no início
+        isBalanceHidden = true; // Confirma que o estado inicial é escondido
     </script>
 </body>
 </html>
